@@ -1,0 +1,50 @@
+[package]
+name = "zirconium"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+spawn = { git = "https://github.com/kkernick/spawn", features = ["fd"] }
+
+anyhow = { version = "1.0.104", default-features = false, features = ["backtrace"] }
+bstr = { version = "1.13.1", default-features = false, features = ["alloc", "std"] }
+clap = { version = "4.6.7", default-features = false, features = ["derive", "env", "help", "std"] }
+hex = { version = "0.4.3", default-features = false, features = ["alloc", "std"] }
+nix = { version = "0.31.3", default-features = false }
+openssl = { version = "0.10.81", default-features = false }
+thiserror = { version = "2.0.21", default-features = false, features = ["std"] }
+tss-esapi = { version = "7.7.0", default-features = false }
+toml = { version = "1.1.8", default-features = false, features = ["display", "parse", "serde", "std"] }
+serde = { version = "1.0.229", default-features = false, features = ["alloc", "derive", "std"] }
+
+[workspace.lints.rust]
+unused_crate_dependencies = "warn"
+
+[workspace.lints.rustdoc]
+broken_intra_doc_links = "deny"
+
+[workspace.lints.clippy]
+absolute_paths = "warn"
+arithmetic_side_effects = "warn"
+clone_on_ref_ptr = "warn"
+missing_docs_in_private_items = "warn"
+mutex_atomic = "warn"
+mutex_integer = "warn"
+str_to_string = "warn"
+unreachable = "warn"
+use_debug = "warn"
+unused_results = "warn"
+unwrap_used = "warn"
+panic = "warn"
+infinite_loop = "warn"
+correctess = "warn"
+nursery = "warn"
+pedantic = "warn"
+suspicious = "warn"
+complexity = "warn"
+perf = "warn"
+implicit_hasher = {level = "allow", priority = 1}
+needless_continue = {level = "allow", priority = 1}
+
+[lints]
+workspace = true

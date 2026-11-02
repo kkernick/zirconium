@@ -1,0 +1,28 @@
+#!/bin/bash
+
+add_unit() {
+  path="${1}"
+  name=$(basename "${path}")
+  wanted="${2}"
+
+  add_file "${path}" "/usr/lib/systemd/system/${name}"
+  add_symlink "/usr/lib/systemd/system/${2}.wants/${name}" "../${name}"
+}
+
+
+build() {
+  add_module zfs tpm_tss tpm_crb
+  map add_binary zfs zpool mount.zfs zr systemd-ask-password
+  map add_systemd_unit "zirconium.service" "systemd-ask-password-console.path" "systemd-ask-password-console.service"
+  add_unit "/usr/lib/systemd/system/zirconium.service" "initrd-root-device.target"
+  map add_file "/etc/hostid" "/etc/zirconium.toml"
+
+  /usr/bin/zrc
+  add_dir "/etc/systemd/system/zirconium.service.d"
+}
+
+help() {
+  cat <<HELPEOF
+Automatically unlock ZFS volumes and datasets with the TPM
+HELPEOF
+}

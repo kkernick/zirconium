@@ -1,0 +1,18 @@
+-s dir
+--name zirconium
+--iteration 1
+--license Unlicense
+--url "https://github.com/kkernick/zirconium"
+--description "Decrypt ZFS volumes on Boot"
+--depends tpm2-tss
+--depends zfs-utils
+
+--after-install hooks/after_install.sh
+
+./target/release/zr=/usr/bin/zr
+./target/release/zrh=/usr/bin/zrh
+./target/release/zrc=/usr/bin/zrc
+
+./services/zirconium.service=/usr/lib/systemd/system/zirconium.service
+./mkinitcpio/zirconium=/usr/lib/initcpio/install/zirconium
+./config.toml=/etc/zirconium.toml

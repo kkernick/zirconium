@@ -1,0 +1,24 @@
+# The address in the TPM to store the decryption key.
+# address = 2164326432
+
+# The PCR registers used to seal the decryption key. Only when these registers match the value
+# on initial enroll will the TPM permit decryption. By default, Zirconium seals against your
+# firmware (0), and SecureBoot state (7).
+# pcrs = [0, 7]
+
+# The root dataset that should be mounted on /sysroot on boot. If your root filesystem isn't ZFS,
+# or you have another means of mounting it, you can leave this blank.
+# root = ""
+
+# An optional prefix that home datasets are located under.
+# For example, "zroot/home_folders" would point at "zroot/home_folders/$USER".
+# If not specified, defaults to your root dateset, in "$ROOT/home/$USER"
+#
+# Either the root or home_prefix must be provided to use `zrh`
+# home_prefix = ""
+
+# List each pool that should be imported/decrypted on boot, and the list of device paths that
+# need to be available to import. These are used to form dependencies on the service, and should
+# be a path that does not change (e.g not /dev/nvme0n1, but /dev/disk/by-id/XXX or /dev/disk/by-uuid)
+# [pools]
+# "pool" = ["deviceA", "deviceB"]

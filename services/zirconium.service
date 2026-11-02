@@ -1,0 +1,12 @@
+[Unit]
+Description=Unlock ZFS volumes with Zirconium
+After=cryptsetup.target
+After=systemd-hibernate-resume.service
+Before=sysroot.mount
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zr
+
+[Install]
+WantedBy=initrd-root-device.target
