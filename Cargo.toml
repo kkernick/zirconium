@@ -11,7 +11,7 @@ bstr = { version = "1.13.1", default-features = false, features = ["alloc", "std
 clap = { version = "4.6.7", default-features = false, features = ["derive", "env", "help", "std"] }
 hex = { version = "0.4.3", default-features = false, features = ["alloc", "std"] }
 nix = { version = "0.31.3", default-features = false }
-openssl = { version = "0.10.81", default-features = false }
+openssl = { version = "0.10.81", default-features = false, features = ["vendored"] }
 thiserror = { version = "2.0.21", default-features = false, features = ["std"] }
 tss-esapi = { version = "7.7.0", default-features = false }
 toml = { version = "1.1.8", default-features = false, features = ["display", "parse", "serde", "std"] }

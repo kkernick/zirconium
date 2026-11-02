@@ -8,6 +8,7 @@
 --depends zfs-utils
 
 --after-install hooks/after_install.sh
+--config-files etc/zirconium.toml
 
 ./target/release/zr=/usr/bin/zr
 ./target/release/zrh=/usr/bin/zrh
